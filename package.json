@@ -1,18 +1,15 @@
 {
-  "name": "@htmlplus/platform",
-  "description": "Includes all repositories for development mode.",
-  "workspaces": [
-    "packages/create-element",
-    "packages/document",
-    "packages/element",
-    "packages/examples",
-    "packages/ui"
-  ],
-  "scripts": {
-    "build": "npm run build -w @htmlplus/element -w @htmlplus/ui && npm run generate -w @htmlplus/examples",
-    "clean": "npm run clean -ws --if-present",
-    "submodules:clone": "git submodule update --init --recursive",
-    "submodules:checkout": "git submodule foreach git checkout main && git checkout main",
-    "submodules:update": "git submodule update --remote --init"
-  }
+	"name": "@htmlplus/platform",
+	"description": "Includes all repositories for development mode.",
+	"scripts": {
+		"install": "npm run install:local",
+		"install:local": "bash install.sh --local",
+		"install:remote": "bash install.sh --remote",
+		"submodules:clone": "git submodule update --init --recursive",
+		"submodules:checkout": "git submodule foreach git checkout main && git checkout main",
+		"submodules:update": "git submodule update --remote --init"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.2"
+	}
 }

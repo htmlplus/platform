@@ -1,7 +1,7 @@
 ## 1- Clone the repository
 
 ```bash
-git clone git@github.com:htmlplus/htmlplus.git
+git clone git@github.com:htmlplus/platform.git
 ```
 
 ## 2- Clone the submodules
@@ -16,7 +16,7 @@ npm run submodules:clone
 npm run submodules:checkout
 ```
 
-## 4- Install root node modules
+## 4- Install node modules
 
 ```bash
 npm i
