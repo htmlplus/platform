@@ -1,45 +1,47 @@
 #!/usr/bin/env bash
 set -e
 
-# Collect all submodules that have package.json
-SUBMODULES=()
-for DIR in packages/*/; do
-  if [ -f "$DIR/package.json" ]; then
-    SUBMODULES+=("${DIR%/}")
-  fi
-done
+if [[ "$1" != "--local" && "$1" != "--remote" ]]; then
+  SUBMODULES=()
 
-# Install dependencies for all submodules
-for SUB in "${SUBMODULES[@]}"; do
-  echo "...::: Installing '$SUB' dependencies :::..."
-  (cd "$SUB" && npm install)
-  echo ""
-done
+  for DIR in packages/*/; do
+    if [ -f "$DIR/package.json" ]; then
+      SUBMODULES+=("${DIR%/}")
+    fi
+  done
 
-# Check if first argument is --local
+  for SUB in "${SUBMODULES[@]}"; do
+    echo "...::: Installing '$SUB' dependencies :::..."
+    (cd "$SUB" && npm install)
+    echo ""
+  done
+fi 
+
 if [[ "$1" == "--local" ]]; then
-  echo "...::: Linking local packages :::..."
+  (cd packages/element && npm run build)
 
-  cd packages/element
-  npm link
-  cd ../..
+  mkdir -p packages/ui/node_modules/@htmlplus/element
 
-  cd packages/ui
-  npm link @htmlplus/element
-  cd ../..
+  rm -rf packages/ui/node_modules/@htmlplus/element/dist
 
-  cd packages/ui
-  npm link
-  cd ../..
+  cp -r packages/element/dist packages/ui/node_modules/@htmlplus/element
 
-  cd packages/document
-  npm link @htmlplus/ui
-  cd ../..
+  (cd packages/ui && npm run build)
 
-  PEER_DEPS=$(node -p "Object.keys(require('./packages/ui/package.json').peerDependencies || {}).join(' ')")
-  if [ -n "$PEER_DEPS" ]; then
-    cd packages/document
-    npm install $PEER_DEPS --no-save --install-strategy=linked
-    cd ../..
-  fi
-fi
+  mkdir -p packages/document/node_modules/@htmlplus/element
+
+  rm -rf packages/document/node_modules/@htmlplus/element/dist
+
+  cp -r packages/element/dist packages/document/node_modules/@htmlplus/element
+
+  mkdir -p packages/document/node_modules/@htmlplus/ui
+
+  rm -rf packages/document/node_modules/@htmlplus/ui/dist
+
+  cp -r packages/ui/dist packages/document/node_modules/@htmlplus/ui
+fi 
+
+if [[ "$1" == "--remote" ]]; then
+  (cd packages/ui && npm i)
+  (cd packages/document && npm i)
+fi 

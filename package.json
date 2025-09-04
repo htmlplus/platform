@@ -2,7 +2,7 @@
 	"name": "@htmlplus/platform",
 	"description": "Includes all repositories for development mode.",
 	"scripts": {
-		"install": "npm run install:local",
+		"install": "bash install.sh",
 		"install:local": "bash install.sh --local",
 		"install:remote": "bash install.sh --remote",
 		"submodules:clone": "git submodule update --init --recursive",
