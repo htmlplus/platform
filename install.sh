@@ -39,6 +39,7 @@ if [[ "$1" == "--local" ]]; then
   rm -rf packages/document/node_modules/@htmlplus/ui/dist
 
   cp -r packages/ui/dist packages/document/node_modules/@htmlplus/ui
+  cp -r packages/ui/package.json packages/document/node_modules/@htmlplus/ui/package.json
 fi 
 
 if [[ "$1" == "--remote" ]]; then
