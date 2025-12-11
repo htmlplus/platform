@@ -1,26 +1,22 @@
 {
   "name": "js-framework-benchmark-htmlplus",
   "version": "1.0.0",
-  "type": "module",
-  "js-framework-benchmark": {
-    "frameworkVersionFromPackage": "@htmlplus/element",
-    "useShadowRoot": true
-  },
-  "scripts": {
-    "build-prod": "rollup -c"
+  "keywords": [
+    "@htmlplus/element"
+  ],
+  "homepage": "https://github.com/krausest/js-framework-benchmark#readme",
+  "bugs": {
+    "url": "https://github.com/krausest/js-framework-benchmark/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/krausest/js-framework-benchmark.git"
   },
-  "keywords": [
-    "@htmlplus/element"
-  ],
   "author": "Masood Abdolian",
-  "bugs": {
-    "url": "https://github.com/krausest/js-framework-benchmark/issues"
+  "type": "module",
+  "scripts": {
+    "build-prod": "rollup -c"
   },
-  "homepage": "https://github.com/krausest/js-framework-benchmark#readme",
   "dependencies": {
     "@htmlplus/element": "latest"
   },
@@ -32,5 +28,9 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.8.1",
     "typescript": "^5.9.2"
+  },
+  "js-framework-benchmark": {
+    "frameworkVersionFromPackage": "@htmlplus/element",
+    "useShadowRoot": true
   }
 }

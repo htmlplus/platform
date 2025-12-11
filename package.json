@@ -5,8 +5,8 @@
 		"install": "bash install.sh",
 		"install:local": "bash install.sh --local",
 		"install:remote": "bash install.sh --remote",
-		"submodules:clone": "git submodule update --init --recursive",
 		"submodules:checkout": "git submodule foreach git checkout main && git checkout main",
+		"submodules:clone": "git submodule update --init --recursive",
 		"submodules:update": "git submodule update --remote --init"
 	},
 	"devDependencies": {
