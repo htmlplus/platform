@@ -25,6 +25,7 @@ if [[ "$1" == "--local" ]]; then
   rm -rf packages/ui/node_modules/@htmlplus/element/dist
 
   cp -r packages/element/dist packages/ui/node_modules/@htmlplus/element
+  cp -r packages/element/package.json packages/ui/node_modules/@htmlplus/element/package.json
 
   (cd packages/ui && npm run build)
 
