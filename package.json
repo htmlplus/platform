@@ -10,6 +10,6 @@
 		"submodules:update": "git submodule update --remote --init"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.2"
+		"@biomejs/biome": "2.5.3"
 	}
 }
