@@ -8,8 +8,5 @@
 		"submodules:clone": "git submodule update --init --recursive",
 		"submodules:checkout": "git submodule foreach git checkout main && git checkout main",
 		"submodules:update": "git submodule update --remote --init"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.5.3"
 	}
 }
